@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 
 import CameraController from "./CameraController";
+import { CameraNavigationProvider } from "./CameraNavigation";
 import Earth from "./Earth";
 import Orbit from "./Orbit";
 import Stars from "./Stars";
@@ -17,7 +18,7 @@ function Universe() {
         position={[0, 0, 0]}
         intensity={80}
         distance={15}
-        color="#FFF4C2"
+        color="#fff4c2"
       />
 
       <Stars />
@@ -38,8 +39,10 @@ export default function SolarSystem() {
         }}
         dpr={[1, 1.5]}
       >
-        <CameraController />
-        <Universe />
+        <CameraNavigationProvider>
+          <CameraController />
+          <Universe />
+        </CameraNavigationProvider>
       </Canvas>
     </div>
   );
